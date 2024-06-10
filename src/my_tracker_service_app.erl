@@ -10,7 +10,17 @@
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    my_tracker_service_sup:start_link().
+        Dispatch = cowboy_router:compile([
+            {'_', [
+                {"/", defualt_page_h, []}
+            ]}
+        ]),
+        cowboy:start_clear(
+            my_http_listener,
+            [{port, 8080}],
+            #{env => #{dispatch => Dispatch}}
+        ),
+        my_tracker_service_sup:start_link().
 
 stop(_State) ->
     ok.
