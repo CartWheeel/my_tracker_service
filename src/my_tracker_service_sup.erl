@@ -1,5 +1,6 @@
 %%%-------------------------------------------------------------------
-%% @doc my_tracker_service top level supervisor.
+%% @doc 
+%% my_tracker_service top level supervisor.
 %% @end
 %%%-------------------------------------------------------------------
 
