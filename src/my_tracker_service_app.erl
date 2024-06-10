@@ -17,7 +17,7 @@ start(_StartType, _StartArgs) ->
         ]),
         cowboy:start_clear(
             my_http_listener,
-            [{port, 8080}],
+            [{port, 80}],
             #{env => #{dispatch => Dispatch}}
         ),
         my_tracker_service_sup:start_link().
