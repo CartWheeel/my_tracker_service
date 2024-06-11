@@ -23,8 +23,8 @@ start(_Type, _Args) ->
         
         {ok, _} = cowboy:start_tls(my_https_listener, [
                                     {port, 443},
-                                    {certfile, PrivDir ++ "/ssl/fullchain.pem"},
-                                    {keyfile, PrivDir ++ "/ssl/privkey.pem"}],
+                                    {certfile, PrivDir ++ "/ssl/cert.pem"},
+                                    {keyfile, PrivDir ++ "/ssl/key.pem"}],
                                     #{env => #{dispatch => Dispatch}}),
 
         my_tracker_service_sup:start_link().
