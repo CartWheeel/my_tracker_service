@@ -1,5 +1,5 @@
 %% @doc Hello world handler.
--module(default_page_h).
+-module(package_transfer_page_h).
 
 -export([init/2]).
 
