@@ -21,10 +21,10 @@ start(_Type, _Args) ->
         PrivDir = code:priv_dir(my_tracker_service),
         %tls stands for transport layer security
         
-        {ok, _} = cowboy:start_tls(my_https_listener, [
+        {ok, _} = cowboy:start_tls(https_listener, [
                                     {port, 443},
-                                    {certfile, PrivDir ++ "/ssl/cert.pem"},
-                                    {keyfile, PrivDir ++ "/ssl/key.pem"}],
+                                    {certfile, PrivDir ++ "/ssl/fullchain.pem"},
+                                    {keyfile, PrivDir ++ "/ssl/privkey.pem"}],
                                     #{env => #{dispatch => Dispatch}}),
 
         my_tracker_service_sup:start_link().
