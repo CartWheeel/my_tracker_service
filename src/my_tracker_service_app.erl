@@ -12,7 +12,7 @@
 start(_Type, _Args) ->
         Dispatch = cowboy_router:compile([
             {'_', [
-                {"/", defualt_page_h, []},
+                {"/", default_page_h, []},
                 {"/package_transferred", package_transfer_page, []}
 
             ]}
@@ -26,7 +26,7 @@ start(_Type, _Args) ->
                                     {certfile, PrivDir ++ "/ssl/fullchain.pem"},
                                     {keyfile, PrivDir ++ "/ssl/privkey.pem"}],
                                     #{env => #{dispatch => Dispatch}}),
-                                    
+
         my_tracker_service_sup:start_link().
 stop(_State) ->
     ok.
