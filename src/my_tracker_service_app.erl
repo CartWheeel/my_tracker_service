@@ -1,5 +1,5 @@
 %%%-------------------------------------------------------------------
-%% @doc hello public API
+%% @doc my_tracker_service public API
 %% @end
 %%%-------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ start(_Type, _Args) ->
 				{keyfile, PrivDir ++ "/ssl/privkey.pem"}
               		], #{env => #{dispatch => Dispatch}}),
 
-        hello_sup:start_link().
+        my_tracker_service_sup:start_link().
 
 stop(_State) ->
     ok.                                                                                     
