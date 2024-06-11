@@ -1,7 +1,7 @@
 {application, my_tracker_service,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
-  {registered, []},
+  {registered, [my_tracker_service_sup]},
   {mod, {my_tracker_service_app, []}},
   {applications,
    [kernel,
