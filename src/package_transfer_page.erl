@@ -6,5 +6,5 @@
 init(Req0, Opts) ->
         Req = cowboy_req:reply(200, #{
                 <<"content-type">> => <<"text/plain">>
-        }, "Hello world this is exciting! Test", Req0),
+        }, "This is incredible! I finally got it to work!", Req0),
         {ok, Req, Opts}.
