@@ -9,7 +9,7 @@ init(Req0, Opts) ->
         
         % [{<<"Package_ID">>,Package_ID},{<<"Location_ID">>,Location_ID}]  = jsx:decode(Data),
         Decoded = jsx:decode(Data),
-        io:format("got ~p~n ",[Decoded])
+        io:format("got ~p~n ",[Decoded]),
 
         % test [<<"35">>,<<"14">>] = [Package_ID,Location_ID],
         % Result = erpc:call('deliveryman@bl.wheresmypackages.com', business_logic, put_package, [Package_ID,Location_ID]), 
