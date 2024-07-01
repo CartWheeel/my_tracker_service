@@ -8,11 +8,10 @@ init(Req0, Opts) ->
         % in an array.
         
         % [{<<"Package_ID">>,Package_ID},{<<"Location_ID">>,Location_ID}]  = jsx:decode(Data),
-        Decoded = jsx:decode(Data),
-        io:format("got ~p~n ",[Decoded]),
+        #{<<"location_id">> := Location_ID, <<"package_id">> := Package_ID} = jsx:decode(Data),
 
         % test [<<"35">>,<<"14">>] = [Package_ID,Location_ID],
-        % Result = erpc:call('deliveryman@bl.wheresmypackages.com', business_logic, put_package, [Package_ID,Location_ID]), 
+        erpc:cast('deliveryman@bl.wheresmypackages.com', business_logic, put_package, [Package_ID,Location_ID]), 
         
         %get_friends_server:get_friends_of(Package_ID) of
                 %         {error,notfound} -> "no such person";
