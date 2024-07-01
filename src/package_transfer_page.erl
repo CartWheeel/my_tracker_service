@@ -7,21 +7,24 @@ init(Req0, Opts) ->
         % it is expected that the data consists of one quoted-string name
         % in an array.
         
-        [{<<"Package_ID">>,Package_ID},{<<"Location_ID">>,Location_ID}]  = jsx:decode(Data),
+        % [{<<"Package_ID">>,Package_ID},{<<"Location_ID">>,Location_ID}]  = jsx:decode(Data),
+        Decoded = jsx:decode(Data),
+        io:format("got ~p~n ",[Decoded])
+
         % test [<<"35">>,<<"14">>] = [Package_ID,Location_ID],
-        Result = erpc:call('deliveryman@bl.wheresmypackages.com', business_logic, put_package, [Package_ID,Location_ID]), 
+        % Result = erpc:call('deliveryman@bl.wheresmypackages.com', business_logic, put_package, [Package_ID,Location_ID]), 
         
         %get_friends_server:get_friends_of(Package_ID) of
                 %         {error,notfound} -> "no such person";
                 %         Friends -> Friends
                 % end,
                 
-        Encoded_message = jsx:encode(Result),
+        % Encoded_message = jsx:encode(Result),
         %io:format("~p~n",[get_friends_server:get_friends_of(Name)]),
 
         Response = cowboy_req:reply(200,
                 #{<<"content-type">> => <<"text/json">>},
-                Encoded_message, Req0),
+                "", Req0),
         {ok, Response, Opts}.
 
 
